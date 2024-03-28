@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ficha de Personagem D&D 5ª Edição</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ficha">
+    <h1>Ficha de Personagem</h1>
+
+    <div class="selecao-classe">
+      <label for="classe">Classe:</label>
+      <select id="classe" onchange="carregarDados()" title="Selecione a classe do personagem">
+        <option value="">Selecione uma Classe</option>
+        <option value="barbarian">Bárbaro</option>
+        <option value="bard">Bardo</option>
+        <option value="cleric">Clérigo</option>
+        <option value="druid">Druida</option>
+        <option value="fighter">Guerreiro</option>
+      </select>
+    </div>
+
+    <div id="ficha" class="dados-classe"></div>
+
+    <section id="hitPoint" class="pontos-vida"></section>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

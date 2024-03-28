@@ -1,0 +1,68 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .ficha {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ficha h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .selecao-classe label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .selecao-classe select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #fff;
+  }
+  
+  .dados-classe ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .dados-classe li {
+    margin-bottom: 10px;
+  }
+  
+  .dados-classe li strong {
+    font-weight: bold;
+  }
+  
+  .pontos-vida strong {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .form-atributos {
+    display: none;
+  }
+
+  #resultado-rolagem {
+    display: flex;
+    gap: 1.1rem;
+    margin: 1.1rem 0 1.1rem 0;
+  }
+  
+  #resultado-rolagem div {
+    width: 30px;
+    text-align: center;
+  }  

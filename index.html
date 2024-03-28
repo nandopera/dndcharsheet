@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ficha de Personagem D&D 5ª Edição</title>
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+  <div class="ficha">
+    <h1>Ficha de Personagem</h1>
+
+    <div class="escolhaClasse">Escolha sua classe:</div>
+    <select id="classe" onchange="carregarDados()" title="Selecione a classe do personagem">
+      <option value="">Selecione uma Classe</option>
+      <option value="barbarian">Bárbaro</option>
+      <option value="bard">Bardo</option>
+      <option value="cleric">Clérigo</option>
+      <option value="druid">Druida</option>
+      <option value="fighter">Guerreiro</option>
+      <option value="monk">Monge</option>
+      <option value="paladin">Paladino</option>
+      <option value="ranger">Ranger</option>
+      <option value="rogue">Ladino</option>
+      <option value="sorcerer">Feiticeiro</option>
+      <option value="warlock">Bruxo</option>
+      <option value="wizard">Mago</option>
+    </select>
+  
+    <section id="hitPoint" class="pontos-vida"></section>
+
+    <div id="ficha"></div>
+
+    <div class="atributos">
+      <h2>Atributos</h2>
+      <button onclick="rolarDadosAtributos()">Rolar Dados dos Atributos</button>
+      <div id="resultado-rolagem"></div>
+      <form id="form-atributos">
+        <div id="rolamento" ondrop="drop(event)" ondragover="allowDrop(event)">
+          Arraste e solte os resultados aqui
+        </div>
+        <br>
+        <label for="forca">Força:</label>
+<input type="number" id="forca" class="atributo-input" name="forca" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
+<input type="text" id="modificadorForca" name="modificador-forca" readonly>
+<br>
+<label for="destreza">Destreza:</label>
+<input type="number" id="destreza" class="atributo-input" name="destreza" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
+<input type="text" id="modificadorDestreza" name="modificador-destreza" readonly>
+<br>
+<label for="constituicao">Constituição:</label>
+<input type="number" id="constituicao" class="atributo-input" name="constituicao" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
+<input type="text" id="modificadorConstituicao" name="modificador-constituicao" readonly>
+<br>
+<label for="inteligencia">Inteligência:</label>
+<input type="number" id="inteligencia" class="atributo-input" name="inteligencia" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
+<input type="text" id="modificadorInteligencia" name="modificador-inteligencia" readonly>
+<br>
+<label for="sabedoria">Sabedoria:</label>
+<input type="number" id="sabedoria" class="atributo-input" name="sabedoria" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
+<input type="text" id="modificadorSabedoria" name="modificador-sabedoria" readonly>
+<br>
+<label for="carisma">Carisma:</label>
+<input type="number" id="carisma" class="atributo-input" name="carisma" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
+<input type="text" id="modificadorCarisma" name="modificador-carisma" readonly>
+<br>
+
+        <button type="submit">Confirmar</button>
+      </form>
+    </div>
+
+    <div class="dados-classe" id="ficha-dados-classe"></div>
+    
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+  <script src="./js/script.js"></script>
+  <script src="./js/dice6D6.js"></script>
+</body>
+</html>
