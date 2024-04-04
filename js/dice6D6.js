@@ -112,6 +112,47 @@ document.getElementById('form-atributos').addEventListener('submit', function(ev
     preencherFicha();
 });
 
+// Drag e drop para touch
+
+// Função para iniciar o toque
+function touchstart(ev) {
+    ev.dataTransfer.setData("text/plain", ev.target.textContent);
+    ev.dataTransfer.setData("text/html", ev.target.outerHTML); // Adicionado para manter a referência ao elemento arrastado
+    ev.target.style.opacity = '0.5'; // Adicionado para tornar o elemento arrastado semitransparente
+}
+
+// Função para executar o toque
+function touchmove(ev) {
+    ev.preventDefault();
+}
+
+// Função para soltar o toque
+function touchend(ev) {
+    const data = ev.dataTransfer.getData("text/plain");
+    const valor = parseInt(data);
+    const elementoArrastado = document.querySelector('.draggable[textContent="' + data + '"]');
+
+    // Atribui o valor ao campo
+    ev.target.value = valor;
+    ev.target.nextElementSibling.value = calcularModificador(valor);
+
+    // Move o elemento arrastado para dentro do campo
+    ev.target.appendChild(elementoArrastado);
+
+    // Oculta o elemento arrastado da lista de resultados
+    elementoArrastado.style.display = 'none';
+
+    ev.target.style.opacity = ''; // Restaurar a opacidade do elemento
+}
+
+// Adiciona eventos de toque aos elementos
+document.getElementById('rolamento').addEventListener('touchstart', touchstart);
+document.getElementById('rolamento').addEventListener('touchmove', touchmove);
+document.getElementById('rolamento').addEventListener('touchend', touchend);
+
+
+// Final drag e drop para touch
+
 // Função para permitir o drop
 function allowDrop(ev) {
     ev.preventDefault();

@@ -5,10 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ficha de Personagem D&D 5ª Edição</title>
   <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="./css/colorscheme.css" id="color-scheme-stylesheet">
 </head>
 <body>
-  <div class="ficha">
-    <h1>Ficha de Personagem</h1>
+  <main class="ficha">
+    <div id="fichaPersonTitulo">
+      <h1>Ficha de Personagem</h1>
+    </div>
+    <header>
+      <div>
+        <label for="color-scheme-toggle">Esquema de Cores:</label>
+        <input type="checkbox" id="color-scheme-toggle" onchange="alternarEsquemaCores()">
+      </div>
+      <figure id="dndlogo"><img src="./images/dnd_5e_logo.png" alt=""></figure>
+      
+    </header>
 
     <div class="escolhaClasse">Escolha sua classe:</div>
     <select id="classe" onchange="carregarDados()" title="Selecione a classe do personagem">
@@ -40,29 +51,31 @@
           Arraste e solte os resultados aqui
         </div>
         <br>
-        <label for="forca">Força:</label>
-<input type="number" id="forca" class="atributo-input" name="forca" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
-<input type="text" id="modificadorForca" name="modificador-forca" readonly>
-<br>
-<label for="destreza">Destreza:</label>
-<input type="number" id="destreza" class="atributo-input" name="destreza" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
-<input type="text" id="modificadorDestreza" name="modificador-destreza" readonly>
-<br>
-<label for="constituicao">Constituição:</label>
-<input type="number" id="constituicao" class="atributo-input" name="constituicao" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
-<input type="text" id="modificadorConstituicao" name="modificador-constituicao" readonly>
-<br>
-<label for="inteligencia">Inteligência:</label>
-<input type="number" id="inteligencia" class="atributo-input" name="inteligencia" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
-<input type="text" id="modificadorInteligencia" name="modificador-inteligencia" readonly>
-<br>
-<label for="sabedoria">Sabedoria:</label>
-<input type="number" id="sabedoria" class="atributo-input" name="sabedoria" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
-<input type="text" id="modificadorSabedoria" name="modificador-sabedoria" readonly>
-<br>
-<label for="carisma">Carisma:</label>
-<input type="number" id="carisma" class="atributo-input" name="carisma" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
-<input type="text" id="modificadorCarisma" name="modificador-carisma" readonly>
+        <section id="atributosAplicados">
+          <label for="forca">Força:</label>
+          <input type="number" id="forca" class="atributo-input" name="forca" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
+          <input type="text" id="modificadorForca" name="modificador-forca" readonly>
+          <br>
+          <label for="destreza">Destreza:</label>
+          <input type="number" id="destreza" class="atributo-input" name="destreza" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
+          <input type="text" id="modificadorDestreza" name="modificador-destreza" readonly>
+          <br>
+          <label for="constituicao">Constituição:</label>
+          <input type="number" id="constituicao" class="atributo-input" name="constituicao" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
+          <input type="text" id="modificadorConstituicao" name="modificador-constituicao" readonly>
+          <br>
+          <label for="inteligencia">Inteligência:</label>
+          <input type="number" id="inteligencia" class="atributo-input" name="inteligencia" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
+          <input type="text" id="modificadorInteligencia" name="modificador-inteligencia" readonly>
+          <br>
+          <label for="sabedoria">Sabedoria:</label>
+          <input type="number" id="sabedoria" class="atributo-input" name="sabedoria" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
+          <input type="text" id="modificadorSabedoria" name="modificador-sabedoria" readonly>
+          <br>
+          <label for="carisma">Carisma:</label>
+          <input type="number" id="carisma" class="atributo-input" name="carisma" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
+          <input type="text" id="modificadorCarisma" name="modificador-carisma" readonly>
+        </section>
 <br>
 
         <button type="submit">Confirmar</button>
@@ -71,9 +84,10 @@
 
     <div class="dados-classe" id="ficha-dados-classe"></div>
     
-  </div>
+  </main>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+  <script src="./js/colorscript.js"></script>
   <script src="./js/script.js"></script>
   <script src="./js/dice6D6.js"></script>
 </body>

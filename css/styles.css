@@ -4,14 +4,33 @@ body {
     margin: 0;
     padding: 0;
   }
+
+#fichaPersonTitulo {
+  text-align: center;
+}
+
+header {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+  #dndlogo {
+    width: 15rem;
+  }
+
+  #dndlogo img {
+    width: 100%;
+  }
   
   .ficha {
     max-width: 600px;
     margin: 20px auto;
-    background-color: #fff;
+    background-color: rgb(255, 254, 245);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
   
   .ficha h1 {
@@ -19,6 +38,10 @@ body {
     margin-bottom: 20px;
   }
   
+#atributosAplicados {
+  display: grid;
+}
+
   .selecao-classe label {
     display: block;
     margin-bottom: 10px;

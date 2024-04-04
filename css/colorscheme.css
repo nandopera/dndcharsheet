@@ -1,0 +1,23 @@
+/* Estilos para o esquema de cores claro */
+body.light {
+    background-color: rgb(238, 240, 230);
+    color: rgb(12, 11, 11);
+}
+
+/* Estilos para o esquema de cores escuro */
+body.dark {
+    background-color: rgb(12, 11, 11);
+    color: rgb(255, 254, 245);
+}
+
+.ficha.light {
+    background-color: rgb(245, 247, 238);
+    color: rgb(12, 11, 11);
+    box-shadow: 0 0 10px rgba(12, 11, 11, 0.2);
+}
+
+.ficha.dark {
+    background-color: rgb(22, 22, 22);
+    color: rgb(245, 255, 249);
+    box-shadow: 0 0 10px rgba(245, 247, 238, 0.37);
+}
