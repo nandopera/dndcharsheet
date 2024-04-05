@@ -38,9 +38,13 @@ header {
     margin-bottom: 20px;
   }
   
-#atributosAplicados {
-  display: grid;
-}
+  #atributosAplicados {
+    display: grid;
+  }
+
+  .atributo-input {
+    width: 6ch;
+  }
 
   .selecao-classe label {
     display: block;
@@ -88,4 +92,14 @@ header {
   #resultado-rolagem div {
     width: 30px;
     text-align: center;
-  }  
+  }
+
+  .draggable {
+    cursor: move;
+    user-select: none;
+    -webkit-user-select: none;
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 5px;
+    display: inline-block;
+}
