@@ -44,7 +44,7 @@
 
     <div class="atributos">
       <h2>Atributos</h2>
-      <button onclick="rolarDadosAtributos()">Rolar Dados dos Atributos</button>
+      <button id="rolar-dados-btn" onclick="rolarDadosAtributos()">Rolar Dados dos Atributos</button>
       <div id="resultado-rolagem"></div>
       <form id="form-atributos">
         <div id="rolamento" ondrop="drop(event)" ondragover="allowDrop(event)">
@@ -54,31 +54,32 @@
         <section id="atributosAplicados">
           <label for="forca">Força:</label>
           <input type="number" id="forca" class="atributo-input" name="forca" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
-          <input type="text" id="modificadorForca" name="modificador-forca" readonly>
+          <input type="text" id="modificadorForca" class="atributo-input" name="modificador-forca" readonly>
           <br>
           <label for="destreza">Destreza:</label>
           <input type="number" id="destreza" class="atributo-input" name="destreza" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
-          <input type="text" id="modificadorDestreza" name="modificador-destreza" readonly>
+          <input type="text" id="modificadorDestreza" class="atributo-input" name="modificador-destreza" readonly>
           <br>
           <label for="constituicao">Constituição:</label>
           <input type="number" id="constituicao" class="atributo-input" name="constituicao" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
-          <input type="text" id="modificadorConstituicao" name="modificador-constituicao" readonly>
+          <input type="text" id="modificadorConstituicao" class="atributo-input" name="modificador-constituicao" readonly>
           <br>
           <label for="inteligencia">Inteligência:</label>
           <input type="number" id="inteligencia" class="atributo-input" name="inteligencia" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
-          <input type="text" id="modificadorInteligencia" name="modificador-inteligencia" readonly>
+          <input type="text" id="modificadorInteligencia" class="atributo-input" name="modificador-inteligencia" readonly>
           <br>
           <label for="sabedoria">Sabedoria:</label>
           <input type="number" id="sabedoria" class="atributo-input" name="sabedoria" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
-          <input type="text" id="modificadorSabedoria" name="modificador-sabedoria" readonly>
+          <input type="text" id="modificadorSabedoria" class="atributo-input" name="modificador-sabedoria" readonly>
           <br>
           <label for="carisma">Carisma:</label>
           <input type="number" id="carisma" class="atributo-input" name="carisma" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
-          <input type="text" id="modificadorCarisma" name="modificador-carisma" readonly>
+          <input type="text" id="modificadorCarisma" class="atributo-input" name="modificador-carisma" readonly>
         </section>
 <br>
 
-        <button type="submit">Confirmar</button>
+        <button type="submit" value="Preencher Ficha">Confirmar</button>
+        <button type="button" id="reiniciar-btn">Reiniciar</button>
       </form>
     </div>
 
@@ -89,6 +90,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
   <script src="./js/colorscript.js"></script>
   <script src="./js/script.js"></script>
-  <script src="./js/dice6D6.js"></script>
+  <script src="./js/charcreate.js"></script>
 </body>
 </html>
