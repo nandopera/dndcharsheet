@@ -38,6 +38,7 @@ function carregarDados() {
       const hitPoints = parseInt(response.data.hp_at_1st_level);
       document.getElementById('hitPoint').textContent = hitPoints;
     })
+    
     .catch(error => {
       // Exibe um erro caso a requisição falhe
       console.error(error);

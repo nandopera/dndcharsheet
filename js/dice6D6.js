@@ -59,23 +59,27 @@ function calcularModificador(valor) {
     return Math.floor((valor - 10) / 2);
 }
 
+// Array para armazenar os números usados
+const numerosUsados = [];
+
 // Função para rolar os dados dos atributos
 function rolarDadosAtributos() {
     const resultadosAtributos = simularSeisVezes();
     const resultadoRolagemDiv = document.getElementById('resultado-rolagem');
     resultadoRolagemDiv.innerHTML = ''; // Limpar conteúdo anterior
-    
-    resultadosAtributos.forEach(valor => {
-        const draggableElement = document.createElement('div');
-        draggableElement.classList.add('draggable');
-        draggableElement.setAttribute('draggable', 'true');
-        draggableElement.textContent = valor;
-        draggableElement.addEventListener('dragstart', drag);
-        resultadoRolagemDiv.appendChild(draggableElement);
+  
+    resultadosAtributos.forEach((valor, index) => {
+      const draggableElement = document.createElement('div');
+      draggableElement.classList.add('draggable');
+      draggableElement.setAttribute('draggable', 'true');
+      draggableElement.textContent = valor;
+      draggableElement.id = 'draggable' + index; // Adicionar um ID único para cada elemento
+      draggableElement.addEventListener('dragstart', drag);
+      resultadoRolagemDiv.appendChild(draggableElement);
     });
-    
+  
     document.getElementById('form-atributos').style.display = 'block';
-}
+  }
 
 // Adiciona evento de click ao botão de rolar dados
 document.getElementById('rolar-dados-btn').addEventListener('click', function() {
@@ -114,41 +118,58 @@ document.getElementById('form-atributos').addEventListener('submit', function(ev
 
 // Drag e drop para touch
 
-// Função para iniciar o toque
-function touchstart(ev) {
+// // Função para iniciar o toque
+// Funções para implementar o arrastar e soltar
+function allowDrop(ev) {
+    ev.preventDefault();
+  }
+  
+  function drag(ev) {
+    const idElementoArrastado = ev.target.id;
+  
+    // Se o número já está em uso, cancela o arrasto
+    if (numerosUsados.includes(idElementoArrastado)) {
+      ev.preventDefault();
+      return;
+    }
+  
+    const touch = ev.targetTouches[0];
+  
+    // Define a posição inicial do elemento arrastado
     ev.dataTransfer.setData("text/plain", ev.target.textContent);
     ev.dataTransfer.setData("text/html", ev.target.outerHTML); // Adicionado para manter a referência ao elemento arrastado
     ev.target.style.opacity = '0.5'; // Adicionado para tornar o elemento arrastado semitransparente
-}
-
-// Função para executar o toque
-function touchmove(ev) {
+  
+    // Armazena o ID do elemento arrastado
+    ev.dataTransfer.setData("text/plain", idElementoArrastado);
+  }
+  
+  function drop(ev) {
     ev.preventDefault();
-}
-
-// Função para soltar o toque
-function touchend(ev) {
     const data = ev.dataTransfer.getData("text/plain");
-    const valor = parseInt(data);
-    const elementoArrastado = document.querySelector('.draggable[textContent="' + data + '"]');
-
+    const valor = parseInt(document.getElementById(data).textContent); // Obtem o valor do elemento arrastado usando o ID
+    const elementoArrastado = document.getElementById(data);
+  
     // Atribui o valor ao campo
     ev.target.value = valor;
     ev.target.nextElementSibling.value = calcularModificador(valor);
-
+  
+    // Adiciona o ID do elemento arrastado ao array de números usados
+    numerosUsados.push(data);
+  
     // Move o elemento arrastado para dentro do campo
     ev.target.appendChild(elementoArrastado);
-
+  
     // Oculta o elemento arrastado da lista de resultados
     elementoArrastado.style.display = 'none';
-
+  
     ev.target.style.opacity = ''; // Restaurar a opacidade do elemento
-}
-
-// Adiciona eventos de toque aos elementos
-document.getElementById('rolamento').addEventListener('touchstart', touchstart);
-document.getElementById('rolamento').addEventListener('touchmove', touchmove);
-document.getElementById('rolamento').addEventListener('touchend', touchend);
+  }
+  
+  // Adiciona eventos de toque aos elementos
+  document.getElementById('resultado-rolagem').addEventListener('touchstart', touchstart);
+  document.getElementById('resultado-rolagem').addEventListener('touchmove', touchmove);
+  document.getElementById('resultado-rolagem').addEventListener('touchend', touchend);
 
 
 // Final drag e drop para touch

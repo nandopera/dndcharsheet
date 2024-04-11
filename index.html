@@ -37,8 +37,14 @@
       <option value="warlock">Bruxo</option>
       <option value="wizard">Mago</option>
     </select>
-  
-    <section id="hitPoint" class="pontos-vida"></section>
+
+    <section>
+      <div class="tituloProp">H.P:</div>
+      <div class="pontos-vida heart">
+        <span id="hitPoint" class="numero-hitpoint">0</span>
+      </div>
+    </section>
+    
 
     <div id="ficha"></div>
 
@@ -50,31 +56,31 @@
         <div id="rolamento" ondrop="drop(event)" ondragover="allowDrop(event)">
           Arraste e solte os resultados aqui
         </div>
-        <br>
+        
         <section id="atributosAplicados">
           <label for="forca">Força:</label>
           <input type="number" id="forca" class="atributo-input" name="forca" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
-          <input type="text" id="modificadorForca" class="atributo-input" name="modificador-forca" readonly>
-          <br>
+          <input type="text" id="modificadorForca" class="atributo-input" name="modificador-forca" title="mod-forca" placeholder="Mod" readonly>
+          
           <label for="destreza">Destreza:</label>
           <input type="number" id="destreza" class="atributo-input" name="destreza" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
-          <input type="text" id="modificadorDestreza" class="atributo-input" name="modificador-destreza" readonly>
-          <br>
+          <input type="text" id="modificadorDestreza" class="atributo-input" name="modificador-destreza" title="mod-destreza" placeholder="Mod"  readonly>
+          
           <label for="constituicao">Constituição:</label>
           <input type="number" id="constituicao" class="atributo-input" name="constituicao" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
-          <input type="text" id="modificadorConstituicao" class="atributo-input" name="modificador-constituicao" readonly>
-          <br>
+          <input type="text" id="modificadorConstituicao" class="atributo-input" name="modificador-constituicao"  title="mod-constituicao" placeholder="Mod" readonly>
+          
           <label for="inteligencia">Inteligência:</label>
           <input type="number" id="inteligencia" class="atributo-input" name="inteligencia" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
-          <input type="text" id="modificadorInteligencia" class="atributo-input" name="modificador-inteligencia" readonly>
-          <br>
+          <input type="text" id="modificadorInteligencia" class="atributo-input" name="modificador-inteligencia" title="mod-inteligencia" placeholder="Mod" readonly>
+          
           <label for="sabedoria">Sabedoria:</label>
           <input type="number" id="sabedoria" class="atributo-input" name="sabedoria" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
-          <input type="text" id="modificadorSabedoria" class="atributo-input" name="modificador-sabedoria" readonly>
-          <br>
+          <input type="text" id="modificadorSabedoria" class="atributo-input" name="modificador-sabedoria" title="mod-sabedoria" placeholder="Mod" readonly>
+          
           <label for="carisma">Carisma:</label>
           <input type="number" id="carisma" class="atributo-input" name="carisma" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
-          <input type="text" id="modificadorCarisma" class="atributo-input" name="modificador-carisma" readonly>
+          <input type="text" id="modificadorCarisma" class="atributo-input" name="modificador-carisma" title="mod-carisma" placeholder="Mod" readonly>
         </section>
 <br>
 

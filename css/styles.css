@@ -1,9 +1,9 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-  }
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
 
 #fichaPersonTitulo {
   text-align: center;
@@ -16,90 +16,159 @@ header {
   justify-content: space-evenly;
 }
 
-  #dndlogo {
-    width: 15rem;
-  }
+#dndlogo {
+  width: 15rem;
+}
 
-  #dndlogo img {
-    width: 100%;
-  }
-  
-  .ficha {
-    max-width: 600px;
-    margin: 20px auto;
-    background-color: rgb(255, 254, 245);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  .ficha h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  #atributosAplicados {
-    display: grid;
-  }
+#dndlogo img {
+  width: 100%;
+}
 
-  .atributo-input {
-    width: 6ch;
-  }
+.ficha {
+  max-width: 600px;
+  margin: 20px auto;
+  background-color: rgb(255, 254, 245);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
 
-  .selecao-classe label {
-    display: block;
-    margin-bottom: 10px;
-  }
-  
-  .selecao-classe select {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    background-color: #fff;
-  }
-  
-  .dados-classe ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .dados-classe li {
-    margin-bottom: 10px;
-  }
-  
-  .dados-classe li strong {
-    font-weight: bold;
-  }
-  
-  .pontos-vida strong {
-    display: block;
-    margin-bottom: 10px;
-  }
-  
-  .form-atributos {
-    display: none;
-  }
+.ficha h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
 
-  #resultado-rolagem {
-    display: flex;
-    gap: 1.1rem;
-    margin: 1.1rem 0 1.1rem 0;
-  }
-  
-  #resultado-rolagem div {
-    width: 30px;
-    text-align: center;
-  }
+#rolamento {
+  margin-bottom: 1rem;
+  text-align: center;
+}
 
-  .draggable {
-    cursor: move;
-    user-select: none;
-    -webkit-user-select: none;
-    border: 1px solid #ccc;
-    padding: 5px;
-    margin: 5px;
-    display: inline-block;
+#form-atributos {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  height: 100vh;
+}
+
+#atributosAplicados {
+  display: grid;
+  grid-template-columns: 6rem 5ch 5ch 6rem 5ch 5ch;
+  /* gap: 1rem; */
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 1rem;
+  grid-row-gap: 0.5rem;
+  align-content: center;
+}
+
+.atributo-input {
+  width: 5ch;
+  text-align: center;
+}
+
+.selecao-classe label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.selecao-classe select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.dados-classe ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.dados-classe li {
+  margin-bottom: 10px;
+}
+
+.dados-classe li strong {
+  font-weight: bold;
+}
+
+.tituloProp {
+  width: 4ch;
+  height: 2.5rem;
+  text-align: center;
+  align-content: center;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+.pontos-vida {
+  display: block;
+  position: relative; /* Adiciona posição relativa */
+  color: rgb(255, 255, 255);
+  font-weight: 800;
+  text-align: center;
+  align-content: center;
+  z-index: 0;
+}
+
+.heart {
+  width: 4ch;
+  height: 2.5rem;
+}
+
+.numero-hitpoint {
+  position: absolute; /* Posiciona o número acima do coração */
+  top: 50%; /* Centraliza verticalmente */
+  left: 50%; /* Centraliza horizontalmente */
+  transform: translate(-50%, -50%); /* Centraliza o número */
+  z-index: 1; /* Garante que o número apareça na frente do coração */
+}
+
+.heart::before,
+.heart::after {
+  position: absolute;
+  content: "";
+  left: 2ch;
+  top: 0;
+  width: 2ch;
+  height: 2.5rem;
+  background: rgb(168, 9, 9);
+  border-radius: 40px 40px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.heart::after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+.centerHP {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#resultado-rolagem {
+  display: flex;
+  gap: 1.1rem;
+  margin: 0.5rem 0 0.5rem 0;
+}
+
+#resultado-rolagem div {
+  width: 30px;
+  text-align: center;
+}
+
+.draggable {
+  cursor: move;
+  user-select: none;
+  -webkit-user-select: none;
+  border: 1px solid #ccc;
+  /* padding: 5px; */
+  margin: 5px;
+  display: inline-block;
 }
