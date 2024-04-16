@@ -6,6 +6,7 @@
   <title>Ficha de Personagem D&D 5ª Edição</title>
   <link rel="stylesheet" href="./css/styles.css">
   <link rel="stylesheet" href="./css/colorscheme.css" id="color-scheme-stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
   <main class="ficha">
@@ -16,10 +17,10 @@
     <header>
       <div>
         <label for="color-scheme-toggle">Esquema de Cores:</label>
-        <input type="checkbox" id="color-scheme-toggle" onchange="alternarEsquemaCores()">
+        <input type="checkbox" id="color-scheme-toggle" class="color-scheme-toggle fa-solid fa-sun" onchange="alternarEsquemaCores()">
       </div>
     </header>
-
+    
     <div class="escolhaClasse">Escolha sua classe:</div>
     <select id="classe" onchange="carregarDados()" title="Selecione a classe do personagem">
       <option value="">Selecione uma Classe</option>
@@ -88,7 +89,6 @@
           <input type="text" id="modificadorCarisma" class="atributo-input" name="modificador-carisma" title="mod-carisma" placeholder="Mod" readonly>
         </section>
 
-
         <div class="btn-wrap">
           <button type="submit" value="Preencher Ficha">Confirmar</button>
           <button type="button" id="reiniciar-btn">Reiniciar</button>
@@ -104,5 +104,6 @@
   <script src="./js/colorscript.js"></script>
   <script src="./js/script.js"></script>
   <script src="./js/charcreate.js"></script>
+  <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
 </body>
 </html>

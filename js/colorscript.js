@@ -1,23 +1,28 @@
 function alternarEsquemaCores() {
     // Obtém o elemento do controle de alternância
-    var toggle = document.getElementById('color-scheme-toggle');
+    let toggle = document.getElementById('color-scheme-toggle');
 
     // Obtém o elemento do corpo
-    var body = document.body;
-
+    let body = document.body;
+    
     // Obtém o elemento da ficha
-    var ficha = document.querySelector('.ficha');
+    let ficha = document.querySelector('.ficha');
+
+    // Obtém o ícone do toggle
+    let icon = document.querySelector('.color-scheme-toggle::before');
 
     // Alterna entre os esquemas de cores claro e escuro
     if (toggle.checked) {
         body.classList.add('dark');
-        ficha.classList.add('dark'); // Aplica a classe 'dark' à ficha
         body.classList.remove('light');
-        ficha.classList.remove('light'); // Remove a classe 'light' da ficha
+        ficha.classList.add('dark');
+        ficha.classList.remove('light');
+        icon.style.content = '\f186'; // Altera o ícone para o escuro
     } else {
         body.classList.add('light');
         body.classList.remove('dark');
-        ficha.classList.add('light'); // Aplica a classe 'light' à ficha
-        ficha.classList.remove('dark'); // Remove a classe 'dark' da ficha
+        ficha.classList.add('light');
+        ficha.classList.remove('dark');
+        icon.style.content = '\f185'; // Altera o ícone para o claro
     }
 }

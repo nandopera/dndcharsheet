@@ -33,3 +33,19 @@ body.dark {
     color: rgb(245, 255, 249);
     box-shadow: 0 0 10px rgba(245, 247, 238, 0.37);
 }
+
+.color-scheme-toggle.light::before {
+    content: '\f185';
+    font-family: Font Awesome Free 6.5.2;
+    font-weight: 600;
+    font-size: 1rem;
+    color: rgb(12, 11, 11);
+  }
+
+.color-scheme-toggle.dark::before {
+  content: '\f186';
+  font-family: Font Awesome Free 6.5.2;
+  font-weight: 600;
+  font-size: 1rem;
+  color: rgb(245, 255, 249);
+}

@@ -169,6 +169,35 @@ function drag(ev) {
   ev.dataTransfer.setData("text/plain", idElementoArrastado);
 }
 
+// Adiciona eventos de toque aos elementos usando Hammer.js
+const resultadoRolagemDiv = document.getElementById('resultado-rolagem');
+const hammertime = new Hammer(resultadoRolagemDiv);
+
+hammertime.on('pan', function(ev) {
+  // Se o toque estiver se movendo para a direita (direção positiva no eixo X), simula o evento de arrastar
+  if (ev.deltaX > 0) {
+    const draggableElement = ev.target;
+    draggableElement.style.transform = `translate(${ev.deltaX}px, 0)`;
+  }
+});
+
+hammertime.on('panend', function(ev) {
+  // Se o toque terminar e o elemento tiver sido movido para a direita o suficiente, simula o evento de soltar
+  if (ev.deltaX > 100) {
+    const draggableElement = ev.target;
+    const data = draggableElement.textContent;
+    const campoDestino = document.getElementById('campo-destino');
+
+    // Atribui o valor ao campo destino
+    campoDestino.textContent = data;
+
+    // Move o elemento para fora da tela
+    draggableElement.style.transform = `translate(500px, 0)`;
+  }
+});
+
+
+
 function dragstart(ev) {
     const idElementoArrastado = ev.target.id;
   
