@@ -11,14 +11,13 @@
   <main class="ficha">
     <div id="fichaPersonTitulo">
       <h1>Ficha de Personagem</h1>
+      <figure id="dndlogo"><img src="./images/dnd_5e_logo.png" alt="Logo do D&D 5ed"></figure>
     </div>
     <header>
       <div>
         <label for="color-scheme-toggle">Esquema de Cores:</label>
         <input type="checkbox" id="color-scheme-toggle" onchange="alternarEsquemaCores()">
       </div>
-      <figure id="dndlogo"><img src="./images/dnd_5e_logo.png" alt="Logo do D&D 5ed"></figure>
-      
     </header>
 
     <div class="escolhaClasse">Escolha sua classe:</div>
@@ -62,6 +61,8 @@
           <input type="number" id="forca" class="atributo-input" name="forca" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
           <input type="text" id="modificadorForca" class="atributo-input" name="modificador-forca" title="mod-forca" placeholder="Mod" readonly>
           
+          <label for="vazio"></label>
+
           <label for="destreza">Destreza:</label>
           <input type="number" id="destreza" class="atributo-input" name="destreza" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
           <input type="text" id="modificadorDestreza" class="atributo-input" name="modificador-destreza" title="mod-destreza" placeholder="Mod"  readonly>
@@ -70,6 +71,8 @@
           <input type="number" id="constituicao" class="atributo-input" name="constituicao" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
           <input type="text" id="modificadorConstituicao" class="atributo-input" name="modificador-constituicao"  title="mod-constituicao" placeholder="Mod" readonly>
           
+          <label for="vazio"></label>
+
           <label for="inteligencia">Inteligência:</label>
           <input type="number" id="inteligencia" class="atributo-input" name="inteligencia" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
           <input type="text" id="modificadorInteligencia" class="atributo-input" name="modificador-inteligencia" title="mod-inteligencia" placeholder="Mod" readonly>
@@ -78,14 +81,18 @@
           <input type="number" id="sabedoria" class="atributo-input" name="sabedoria" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
           <input type="text" id="modificadorSabedoria" class="atributo-input" name="modificador-sabedoria" title="mod-sabedoria" placeholder="Mod" readonly>
           
+          <label for="vazio"></label>
+
           <label for="carisma">Carisma:</label>
           <input type="number" id="carisma" class="atributo-input" name="carisma" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
           <input type="text" id="modificadorCarisma" class="atributo-input" name="modificador-carisma" title="mod-carisma" placeholder="Mod" readonly>
         </section>
-<br>
 
-        <button type="submit" value="Preencher Ficha">Confirmar</button>
-        <button type="button" id="reiniciar-btn">Reiniciar</button>
+
+        <div class="btn-wrap">
+          <button type="submit" value="Preencher Ficha">Confirmar</button>
+          <button type="button" id="reiniciar-btn">Reiniciar</button>
+        </div>
       </form>
     </div>
 
