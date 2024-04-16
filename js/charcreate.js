@@ -46,7 +46,7 @@ function rolarDadosAtributos() {
     resultadoRolagemDiv.appendChild(draggableElement);
   });
 
-  document.getElementById('form-atributos').style.display = 'block';
+  document.getElementById('form-atributos').style.display = 'flex';
 
   document.getElementById('resultado-rolagem').addEventListener('drop', function(ev) {
     ev.preventDefault();

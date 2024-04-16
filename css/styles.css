@@ -6,7 +6,12 @@ body {
 }
 
 #fichaPersonTitulo {
+  padding-top: 1rem;
   text-align: center;
+  background-image: url("/dndcharsheet/images/tittle-img.jpg");
+  height: 350px;
+  object-fit: fill;
+  transform-origin: -20px;
 }
 
 header {
@@ -47,17 +52,23 @@ header {
   display: flex;
   justify-content: center; /* Centraliza horizontalmente */
   align-items: center; /* Centraliza verticalmente */
-  height: 100vh;
+  flex-direction: column;
 }
 
 #atributosAplicados {
   display: grid;
-  grid-template-columns: 6rem 5ch 5ch 6rem 5ch 5ch;
-  /* gap: 1rem; */
+  grid-template-columns: 6rem 5ch 5ch 2rem 6rem 5ch 5ch;
   grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 1rem;
-  grid-row-gap: 0.5rem;
+  grid-row-gap: 0.8rem;
   align-content: center;
+}
+
+.btn-wrap {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
 }
 
 .atributo-input {
