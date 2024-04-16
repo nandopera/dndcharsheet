@@ -170,31 +170,70 @@ function drag(ev) {
 }
 
 // Adiciona eventos de toque aos elementos usando Hammer.js
-const resultadoRolagemDiv = document.getElementById('resultado-rolagem');
-const hammertime = new Hammer(resultadoRolagemDiv);
+const resultadoRolagemDiv = document.getElementById('draggable');
 
-hammertime.on('pan', function(ev) {
-  // Se o toque estiver se movendo para a direita (direção positiva no eixo X), simula o evento de arrastar
-  if (ev.deltaX > 0) {
-    const draggableElement = ev.target;
-    draggableElement.style.transform = `translate(${ev.deltaX}px, 0)`;
+const mc = new Hammer(document.getElementById('resultado-rolagem'));
+
+mc.on("pan", handleDrag);
+mc.on("tap", handleTap);
+
+
+function handleDrag(ev) {
+  const idElementoArrastado = ev.target.id;
+
+  // Se o número já está em uso, cancela o arrasto
+  if (numerosUsados.includes(idElementoArrastado)) {
+    ev.preventDefault();
+    return;
   }
-});
 
-hammertime.on('panend', function(ev) {
-  // Se o toque terminar e o elemento tiver sido movido para a direita o suficiente, simula o evento de soltar
-  if (ev.deltaX > 100) {
-    const draggableElement = ev.target;
-    const data = draggableElement.textContent;
-    const campoDestino = document.getElementById('campo-destino');
+  // Define a posição inicial do elemento arrastado
+  ev.dataTransfer.setData("text/plain", idElementoArrastado);
+  ev.dataTransfer.setData("text/html", ev.target.outerHTML);
+  ev.target.style.opacity = '0.5';
 
-    // Atribui o valor ao campo destino
-    campoDestino.textContent = data;
+  // Armazena o ID do elemento arrastado
+  ev.dataTransfer.setData("text/plain", idElementoArrastado);
 
-    // Move o elemento para fora da tela
-    draggableElement.style.transform = `translate(500px, 0)`;
+  // Adiciona o ID do elemento arrastado ao array de números usados
+  numerosUsados.push(idElementoArrastado);
+}
+
+function handleTap(ev) {
+  const idElementoArrastado = ev.target.id;
+
+  // Se o número já está em uso, cancela o arrasto
+  if (numerosUsados.includes(idElementoArrastado)) {
+    ev.preventDefault();
+    return;
   }
-});
+
+  // Define a posição inicial do elemento arrastado
+  const data = ev.dataTransfer.getData("text/plain");
+  const valor = parseInt(document.getElementById(data).textContent); // Obtem o valor do elemento arrastado usando o ID
+  const elementoArrastado = document.getElementById(data);
+
+  // Atribui o valor ao campo
+  ev.target.value = valor;
+  ev.target.nextElementSibling.value = calcularModificador(valor);
+
+  // Move o elemento arrastado para dentro do campo
+  ev.target.appendChild(elementoArrastado);
+
+  // Oculta o elemento arrastado da lista de resultados
+  elementoArrastado.style.display = 'none';
+
+  ev.target.style.opacity = ''; // Restaurar a opacidade do elemento
+
+  // Permite que o elemento seja arrastado novamente
+  elementoArrastado.draggable = true;
+
+  // Remove o ID do elemento arrastado do array de números usados
+  const indice = numerosUsados.indexOf(data);
+  if (indice !== -1) {
+    numerosUsados.splice(indice, 1);
+  }
+}
 
 
 
