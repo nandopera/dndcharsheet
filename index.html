@@ -10,18 +10,18 @@
 </head>
 <body>
   <main class="ficha">
-    <div id="fichaPersonTitulo">
-      <h1>Ficha de Personagem</h1>
-      <figure id="dndlogo"><img src="./images/dnd_5e_logo.png" alt="Logo do D&D 5ed"></figure>
-    </div>
     <header>
-      <div>
+      <div id="fichaPersonTitulo">
+        <figure id="dndlogo"><img src="./images/dnd_5e_logo.png" alt="Logo do D&D 5ed"></figure>
+      </div>
+      <div class="fichaStatus">
+        <h1>Ficha de Personagem</h1>
         <label for="color-scheme-toggle">Esquema de Cores:</label>
         <input type="checkbox" id="color-scheme-toggle" class="color-scheme-toggle fa-solid fa-sun" onchange="alternarEsquemaCores()">
       </div>
     </header>
     
-    <div class="escolhaClasse">Escolha sua classe:</div>
+    <div class="escolhaClasse">Classe:
     <select id="classe" onchange="carregarDados()" title="Selecione a classe do personagem">
       <option value="">Selecione uma Classe</option>
       <option value="barbarian">Bárbaro</option>
@@ -38,17 +38,7 @@
       <option value="wizard">Mago</option>
     </select>
 
-    <section>
-      <div class="tituloProp">H.P:</div>
-      <div class="pontos-vida heart">
-        <span id="hitPoint" class="numero-hitpoint">0</span>
-      </div>
-    </section>
-    
-
-    <div id="ficha"></div>
-
-    <div class="atributos">
+    <section class="atributos">
       <h2>Atributos</h2>
       <button id="rolar-dados-btn" onclick="rolarDadosAtributos()">Rolar Dados dos Atributos</button>
       <div id="resultado-rolagem"></div>
@@ -60,33 +50,33 @@
         <section id="atributosAplicados">
           <label for="forca">Força:</label>
           <input type="number" id="forca" class="atributo-input" name="forca" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
-          <input type="text" id="modificadorForca" class="atributo-input" name="modificador-forca" title="mod-forca" placeholder="Mod" readonly>
+          <input type="text" id="modificadorForca" class="modificadorInput" name="modificador-forca" title="mod-forca" placeholder="Mod" readonly>
           
           <label for="vazio"></label>
 
           <label for="destreza">Destreza:</label>
           <input type="number" id="destreza" class="atributo-input" name="destreza" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
-          <input type="text" id="modificadorDestreza" class="atributo-input" name="modificador-destreza" title="mod-destreza" placeholder="Mod"  readonly>
+          <input type="text" id="modificadorDestreza" class="modificadorInput" name="modificador-destreza" title="mod-destreza" placeholder="Mod"  readonly>
           
           <label for="constituicao">Constituição:</label>
           <input type="number" id="constituicao" class="atributo-input" name="constituicao" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
-          <input type="text" id="modificadorConstituicao" class="atributo-input" name="modificador-constituicao"  title="mod-constituicao" placeholder="Mod" readonly>
+          <input type="text" id="modificadorConstituicao" class="modificadorInput" name="modificador-constituicao"  title="mod-constituicao" placeholder="Mod" readonly>
           
           <label for="vazio"></label>
 
           <label for="inteligencia">Inteligência:</label>
           <input type="number" id="inteligencia" class="atributo-input" name="inteligencia" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
-          <input type="text" id="modificadorInteligencia" class="atributo-input" name="modificador-inteligencia" title="mod-inteligencia" placeholder="Mod" readonly>
+          <input type="text" id="modificadorInteligencia" class="modificadorInput" name="modificador-inteligencia" title="mod-inteligencia" placeholder="Mod" readonly>
           
           <label for="sabedoria">Sabedoria:</label>
           <input type="number" id="sabedoria" class="atributo-input" name="sabedoria" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
-          <input type="text" id="modificadorSabedoria" class="atributo-input" name="modificador-sabedoria" title="mod-sabedoria" placeholder="Mod" readonly>
+          <input type="text" id="modificadorSabedoria" class="modificadorInput" name="modificador-sabedoria" title="mod-sabedoria" placeholder="Mod" readonly>
           
           <label for="vazio"></label>
 
           <label for="carisma">Carisma:</label>
           <input type="number" id="carisma" class="atributo-input" name="carisma" min="3" max="18" readonly ondrop="drop(event)" ondragover="allowDrop(event)" required>
-          <input type="text" id="modificadorCarisma" class="atributo-input" name="modificador-carisma" title="mod-carisma" placeholder="Mod" readonly>
+          <input type="text" id="modificadorCarisma" class="modificadorInput" name="modificador-carisma" title="mod-carisma" placeholder="Mod" readonly>
         </section>
 
         <div class="btn-wrap">
@@ -94,17 +84,23 @@
           <button type="button" id="reiniciar-btn">Reiniciar</button>
         </div>
       </form>
-    </div>
+    </section>
+    
+    <section>
+      <div class="tituloProp">H.P:</div>
+      <div class="pontos-vida heart">
+        <span id="hitPoint" class="numero-hitpoint">0</span>
+      </div>
+    </section>
 
     <div class="dados-classe" id="ficha-dados-classe"></div>
-    
+    <div id="ficha"></div>
   </main>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
   <script src="./js/colorscript.js"></script>
+  <script src="./js/hammer.min.js"></script>
   <script src="./js/script.js"></script>
-  <script src="./js/charcreate.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
-  <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
+  <script src="./js/charcreate-new.js"></script>
 </body>
 </html>

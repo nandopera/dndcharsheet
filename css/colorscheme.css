@@ -1,10 +1,9 @@
-/* Estilos para o esquema de cores claro */
+/* Estilos para os esquemas de cores */
 body.light {
     background-color: rgb(238, 240, 230);
     color: rgb(12, 11, 11);
 }
 
-/* Estilos para o esquema de cores escuro */
 body.dark {
     background-color: rgb(12, 11, 11);
     color: rgb(255, 254, 245);
@@ -22,30 +21,17 @@ body.dark {
     box-shadow: 0 0 10px rgba(245, 247, 238, 0.37);
 }
 
-.tituloProp.light {
-    background-color: rgb(245, 247, 238);
-    color: rgb(12, 11, 11);
-    box-shadow: 0 0 10px rgba(12, 11, 11, 0.2);
+.color-scheme-toggle {
+    font-family: 'Font Awesome 6 Free'; /* Fonte do Font Awesome */
+    font-weight: 900; /* Peso do ícone */
 }
 
-.tituloProp.dark {
-    background-color: rgb(22, 22, 22);
-    color: rgb(245, 255, 249);
-    box-shadow: 0 0 10px rgba(245, 247, 238, 0.37);
+/* Ícone do esquema claro */
+.color-scheme-toggle.light:before {
+    content: '\f185'; /* Ícone de sol */
 }
 
-.color-scheme-toggle.light::before {
-    content: '\f185';
-    font-family: Font Awesome Free 6.5.2;
-    font-weight: 600;
-    font-size: 1rem;
-    color: rgb(12, 11, 11);
-  }
-
-.color-scheme-toggle.dark::before {
-  content: '\f186';
-  font-family: Font Awesome Free 6.5.2;
-  font-weight: 600;
-  font-size: 1rem;
-  color: rgb(245, 255, 249);
+/* Ícone do esquema escuro */
+.color-scheme-toggle.dark:before {
+    content: '\f186'; /* Ícone de lua */
 }

@@ -1,17 +1,40 @@
-// Função para carregar dados da classe selecionada
 function carregarDados() {
   const classe = document.getElementById('classe').value;
   if (!classe) return;
+ 
+   const modConstElement = document.getElementById('modificadorConstituicao');
+   let modificadorConstituicao = 0;
+ 
+   document.getElementById('modificadorConstituicao').addEventListener('input', calculateHitPoints);
+ 
+   function calculateHitPoints() {
+     const constituicaoValue = parseInt(document.getElementById('modificadorConstituicao').value);
+ 
+     modificadorConstituicao = Math.floor((constituicaoValue - 10) / 2);
+ 
+     const hitPointsBase = parseInt(document.getElementById('hitPointBase').textContent);
+ 
+     const hitPoints = hitPointsBase + modificadorConstituicao;
+ 
+     document.getElementById('hitPoint').textContent = `${hitPoints}`;
+   }
 
-  // Faz a requisição para a API do Open5E usando Axios
   axios.get(`https://api.open5e.com/v1/classes/${classe}`)
     .then(response => {
-      // Verifica se os dados retornados são válidos
-      if (!response.data || !response.data.name || !response.data.prof_saving_throws || !response.data.prof_weapons || !response.data.prof_skills) {
-        throw new Error('Dados da classe inválidos');
+      if (!response.data) {
+        throw new Error('Invalid API response');
       }
 
-      // Exibe os dados da classe na ficha
+      const hitPointsBase = parseInt(response.data.hp_at_1st_level);
+
+      if (isNaN(hitPointsBase)) {
+        throw new Error('Invalid hit point value');
+      }
+
+      const hitPoints = hitPointsBase + modificadorConstituicao;
+
+      document.getElementById('hitPoint').textContent = `${hitPoints}`;
+
       let savingThrowsList = '';
       const profSavingThrows = response.data.prof_saving_throws;
 
@@ -20,28 +43,23 @@ function carregarDados() {
       } else {
         for (const prop in profSavingThrows) {
           if (profSavingThrows.hasOwnProperty(prop)) {
-            savingThrowsList += `${prop}: ${profSavingThrows[prop]}, `;
+            savingThrowsList += `${prop}: ${profSavingThrows[prop]}`;
           }
         }
       }
 
       document.getElementById('ficha').innerHTML = `
-        <h2>${response.data.name}</h2>
+        <h2>Class Summary</h2>
         <ul>
-          <li><strong>Atributos de Salvação:</strong> ${savingThrowsList}</li>
-          <li><strong>Habilidades Proficientes:</strong> ${response.data.prof_weapons}</li>
-          <li><strong>Perícias Proficientes:</strong> ${response.data.prof_skills}</li>
+          <li><strong>Saving Throws:</strong> ${savingThrowsList}</li>
+          <li><strong>Proficient Skills:</strong> ${response.data.prof_weapons}</li>
+          <li><strong>Proficient Proficiencies:</strong> ${response.data.prof_skills}</li>
+          <li><strong>Hit Points:</strong> ${hitPoints}</li>
         </ul>
       `;
-
-      // Converte o número de pontos de vida de string para número e exibe
-      const hitPoints = parseInt(response.data.hp_at_1st_level);
-      document.getElementById('hitPoint').textContent = hitPoints;
     })
-    
     .catch(error => {
-      // Exibe um erro caso a requisição falhe
       console.error(error);
-      document.getElementById('ficha').innerHTML = `<p>Erro ao carregar dados da classe.</p>`;
+      document.getElementById('ficha').innerHTML = `<p>Error loading class data.</p>`;
     });
 }
